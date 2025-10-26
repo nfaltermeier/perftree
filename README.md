@@ -111,10 +111,11 @@ g1f3 440
 ### Running perftree
 
 Run `perftree` from the commandline, and pass the path to your perft executable
-as the first argument:
+as the first argument. You can also provide extra arguments that will be passed
+to your script before the depth, fen, and moves arguments:
 
 ```bash
-perftree ./your-script.sh
+perftree ./your-script.sh [extra arguments]
 ```
 
 `perftree` understands the following commands:

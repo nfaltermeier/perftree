@@ -15,13 +15,13 @@ pub struct State {
 }
 
 impl State {
-    pub fn new<S>(cmd: S) -> anyhow::Result<State>
+    pub fn new<S>(cmd: S, args: Vec<String>) -> anyhow::Result<State>
     where
         S: Into<String>,
     {
         Ok(State {
             stockfish: Stockfish::new().context("failed to initialize stockfish")?,
-            script: Script::new(cmd),
+            script: Script::new(cmd, args),
             fen: INITIAL_FEN.to_string(),
             moves: Vec::new(),
             depth: 1,
@@ -146,20 +146,22 @@ impl Perft {
 
 pub struct Script {
     cmd: String,
+    args: Vec<String>,
 }
 
 impl Script {
-    pub fn new<S>(cmd: S) -> Script
+    pub fn new<S>(cmd: S, args: Vec<String>) -> Script
     where
         S: Into<String>,
     {
-        Script { cmd: cmd.into() }
+        Script { cmd: cmd.into(), args }
     }
 }
 
 impl Engine for Script {
     fn perft(&mut self, fen: &str, moves: &[String], depth: usize) -> anyhow::Result<Perft> {
         let mut command = Command::new(&self.cmd);
+        command.args(&self.args);
         command.arg(depth.to_string());
         command.arg(fen);
         if !moves.is_empty() {
