@@ -108,6 +108,10 @@ g1f3 440
 8902
 ```
 
+#### Windows Scripting
+
+On Windows, using a Batch file for your user script is suggested for the easiest setup.
+
 ### Running perftree
 
 Run `perftree` from the commandline, and pass the path to your perft executable
