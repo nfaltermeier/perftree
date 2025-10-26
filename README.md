@@ -110,7 +110,7 @@ g1f3 440
 
 #### Windows Scripting
 
-On Windows, using a Batch file for your user script is suggested for the easiest setup.
+On Windows, using a batch file for your user script is suggested for the easiest setup.
 
 ### Running perftree
 
