@@ -154,7 +154,10 @@ impl Script {
     where
         S: Into<String>,
     {
-        Script { cmd: cmd.into(), args }
+        Script {
+            cmd: cmd.into(),
+            args,
+        }
     }
 }
 

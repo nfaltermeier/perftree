@@ -42,7 +42,10 @@ fn main() -> anyhow::Result<()> {
     let mut prompt = Prompt::new(input.lock());
     let mut output = StandardStream::stdout(ColorChoice::Auto);
 
-    let mut state = State::new(env::args().nth(1).unwrap_or_else(|| usage()), env::args().skip(2).collect())?;
+    let mut state = State::new(
+        env::args().nth(1).unwrap_or_else(|| usage()),
+        env::args().skip(2).collect(),
+    )?;
 
     while let Some(line) = prompt.prompt("> ")? {
         let mut words = line.split_whitespace();
